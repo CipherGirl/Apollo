@@ -1,7 +1,7 @@
 // Creating an interface
 export interface IUser {
   id: string;
-  role: "student";
+  role: 'student';
   password: string;
   name: {
     firstName: string;
@@ -9,9 +9,13 @@ export interface IUser {
     lastName: string;
   };
   dateOfBirth?: string;
-  gender: "Male" | "Female";
+  gender: 'Male' | 'Female';
   email?: string;
   contactNo: string;
   presentAddress: string;
   permanentAddress: string;
+}
+
+export interface IUserMethods {
+  fullName(): string;
 }

@@ -1,5 +1,5 @@
-import { IUser } from "./user.interface";
-import User from "./user.model";
+import { IUser } from './user.interface';
+import User from './user.model';
 
 export const getUsersFromDB = async (): Promise<IUser[]> => {
   const users = await User.find();
@@ -15,6 +15,7 @@ export const getUserByIdFromDB = async (
 
 export const createUsertoDB = async (payload: IUser): Promise<IUser> => {
   const user = new User(payload);
+  // user.fullName() // Custom Instance Method
   await user.save();
   return user;
 };
