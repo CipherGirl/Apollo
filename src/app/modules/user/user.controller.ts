@@ -1,15 +1,16 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 import {
   createUsertoDB,
+  getAdminUsersFromDB,
   getUserByIdFromDB,
   getUsersFromDB,
-} from "./user.service";
-import User from "./user.model";
+} from './user.service';
+import User from './user.model';
 
 export const getUsers = async (req: Request, res: Response) => {
   const users = await getUsersFromDB();
   res.status(200).json({
-    status: "Success",
+    status: 'Success',
     data: users,
   });
 };
@@ -19,8 +20,17 @@ export const getUserById = async (req: Request, res: Response) => {
   const user = await getUserByIdFromDB(id);
 
   res.status(200).json({
-    status: "Success",
+    status: 'Success',
     data: user,
+  });
+};
+
+export const getAdminUsers = async (req: Request, res: Response) => {
+  const users = await getAdminUsersFromDB();
+
+  res.status(200).json({
+    status: 'Success',
+    data: users,
   });
 };
 
@@ -29,7 +39,7 @@ export const createUser = async (req: Request, res: Response) => {
   const user = await createUsertoDB(data);
 
   res.status(200).json({
-    status: "Success",
+    status: 'Success',
     data: user,
   });
 };

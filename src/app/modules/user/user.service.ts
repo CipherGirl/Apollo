@@ -13,6 +13,11 @@ export const getUserByIdFromDB = async (
   return user;
 };
 
+export const getAdminUsersFromDB = async (): Promise<IUser[]> => {
+  const admins = await User.getAdminUsers();
+  return admins;
+};
+
 export const createUsertoDB = async (payload: IUser): Promise<IUser> => {
   const user = new User(payload);
   // user.fullName() // Custom Instance Method

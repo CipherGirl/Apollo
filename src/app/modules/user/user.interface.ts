@@ -1,3 +1,5 @@
+import { Model } from 'mongoose';
+
 // Creating an interface
 export interface IUser {
   id: string;
@@ -18,4 +20,8 @@ export interface IUser {
 
 export interface IUserMethods {
   fullName(): string;
+}
+
+export interface UserModel extends Model<IUser, {}, IUserMethods> {
+  getAdminUsers(): IUser[];
 }
