@@ -6,10 +6,15 @@ export const getUsersFromDB = async (): Promise<IUser[]> => {
   return users;
 };
 
-export const createUsertoDB = async (payload: IUser) : Promise<IUser> => {
+export const getUserByIdFromDB = async (
+  payload: string
+): Promise<IUser | null> => {
+  const user = await User.findOne({ id: payload }, { name: 1, contactNo: 1 });
+  return user;
+};
+
+export const createUsertoDB = async (payload: IUser): Promise<IUser> => {
   const user = new User(payload);
   await user.save();
   return user;
 };
-
-
